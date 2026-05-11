@@ -6,11 +6,12 @@ import 'lenis/dist/lenis.css';
 import './globals.css';
 import Footer from '@/components/Footer';
 import ScrollProgressIndicator from '@/components/ScrollProgressIndicator';
-import ParticleBackground from '@/components/ParticleBackground';
 import Navbar from '@/components/Navbar';
-import CustomCursor from '@/components/CustomCursor';
 import Preloader from '../components/Preloader';
-import StickyEmail from './_components/StickyEmail';
+import SidebarDock from './_components/StickyEmail';
+import { LanguageProvider } from '@/components/LanguageProvider';
+import HashScroll from '@/components/HashScroll';
+import CustomCursor from '@/components/CustomCursor';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
@@ -22,15 +23,40 @@ const antonFont = Anton({
 });
 
 const robotoFlex = Roboto_Flex({
-    weight: ['100', '400', '500', '600', '700', '800'],
-    style: 'normal',
     subsets: ['latin'],
     variable: '--font-roboto-flex',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
-    title: 'Portfolio - Tajmirul Islam',
-    description: 'Personal portfolio of Tajmirul Islam',
+    title: 'Portfolio - Adrian Shahnazari Darcheh',
+    description:
+        'Personal portfolio of Adrian Shahnazari Darcheh, a first-year Computer Engineering student building full-stack projects and polished user experiences.',
+    metadataBase: new URL('https://adrianshah.github.io'),
+    openGraph: {
+        title: 'Portfolio - Adrian Shahnazari Darcheh',
+        description:
+            'Personal portfolio of Adrian Shahnazari Darcheh, showcasing projects, experience, and technical skills.',
+        url: '/',
+        siteName: 'Adrian Shahnazari Portfolio',
+        type: 'website',
+        images: [
+            {
+                url: '/icon.svg',
+                type: 'image/svg+xml',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary',
+        title: 'Portfolio - Adrian Shahnazari Darcheh',
+        description:
+            'Explore Adrian Shahnazari Darcheh\'s portfolio projects, experience, and technical work.',
+        images: ['/icon.svg'],
+    },
+    icons: {
+        icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    },
 };
 
 export default function RootLayout({
@@ -61,7 +87,8 @@ export default function RootLayout({
                         duration: 1.4,
                     }}
                 >
-                    {/* <a
+                    <LanguageProvider>
+                        {/* <a
                         href="https://forms.gle/t73XYJgWD5cJNr6e8"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -70,15 +97,16 @@ export default function RootLayout({
                         Frontend dev? I&apos;ll help you polish your resume —
                         completely free.
                     </a> */}
-                    <Navbar />
-                    <main>{children}</main>
-                    <Footer />
+                        <Navbar />
+                        <HashScroll />
+                        <main>{children}</main>
+                        <Footer />
 
-                    <CustomCursor />
-                    <Preloader />
-                    <ScrollProgressIndicator />
-                    <ParticleBackground />
-                    <StickyEmail />
+                        <SidebarDock />
+                        <CustomCursor />
+                        <Preloader />
+                        <ScrollProgressIndicator />
+                    </LanguageProvider>
                 </ReactLenis>
             </body>
         </html>

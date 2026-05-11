@@ -1,7 +1,6 @@
 'use client';
 import ArrowAnimation from '@/components/ArrowAnimation';
-import Button from '@/components/Button';
-import { GENERAL_INFO } from '@/lib/data';
+import { useLanguage } from '@/components/LanguageProvider';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -11,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Banner = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const { copy } = useLanguage();
 
     // move the content a little up on scroll
     useGSAP(
@@ -37,65 +37,33 @@ const Banner = () => {
         <section className="relative overflow-hidden" id="banner">
             <ArrowAnimation />
             <div
-                className="container h-[100svh] min-h-[530px] max-md:pb-10 flex justify-between items-center max-md:flex-col"
+                className="container h-[100svh] min-h-[530px] max-md:pb-10 flex items-center"
                 ref={containerRef}
             >
-                <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
-                    <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] font-anton">
-                        <span className="text-primary">FRONTEND</span>
-                        <br /> <span className="ml-4">DEVELOPER</span>
+                <div className="max-w-[760px]">
+                    <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] lg:text-[96px] font-anton">
+                        <span>{copy.banner.title[0]}</span>{' '}
+                        <span className="text-primary">{copy.banner.title[1]}</span>
                     </h1>
-                    <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
-                        Hi! I&apos;m{' '}
-                        <span className="font-medium text-foreground">
-                            Tajmirul
-                        </span>
-                        . A creative Frontend Developer with 3+ years of
-                        experience in building high-performance, scalable, and
-                        responsive web solutions.
+                    <p className="banner-description slide-up-and-fade mt-8 max-w-[720px] text-xl leading-relaxed text-muted-foreground">
+                        <strong className="font-semibold text-foreground">
+                            {copy.banner.name}
+                        </strong>{' '}
+                        <span>{copy.banner.description}</span>
                     </p>
-                    <Button
-                        as="link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={GENERAL_INFO.upworkProfile}
-                        variant="primary"
-                        className="mt-9 banner-button slide-up-and-fade"
-                    >
-                        Let&apos;s Talk
-                    </Button>
 
-                    <div className="flex items-center gap-2 mt-3">
-                        <span className="size-3 rounded-full bg-white"></span>
+                    <div className="flex items-center gap-2 mt-5">
+                        <span className="size-3 rounded-full bg-primary"></span>
                         <span className="text-sm text-muted-foreground">
-                            Available for full-time opportunities
+                            {copy.banner.status}
                         </span>
                     </div>
-                </div>
-
-                <div className="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right">
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            3+
-                        </h5>
-                        <p className="text-muted-foreground">
-                            Years of Experience
-                        </p>
-                    </div>
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            7+
-                        </h5>
-                        <p className="text-muted-foreground">
-                            Completed Projects
-                        </p>
-                    </div>
-                    <div className="slide-up-and-fade">
-                        <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            10K+
-                        </h5>
-                        <p className="text-muted-foreground">Hours Worked</p>
-                    </div>
+                    <a
+                        href="#contact"
+                        className="inline-flex items-center mt-5 rounded-full border border-primary/60 bg-primary/15 px-5 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                    >
+                        Let&apos;s Connect
+                    </a>
                 </div>
             </div>
         </section>
