@@ -29,12 +29,12 @@ const robotoFlex = Roboto_Flex({
 });
 
 export const metadata: Metadata = {
-    title: 'Portfolio - Adrian Shahnazari Darcheh',
+    title: 'Adrian Shahnazari',
     description:
         'Personal portfolio of Adrian Shahnazari Darcheh, a first-year Computer Engineering student building full-stack projects and polished user experiences.',
     metadataBase: new URL('https://adrianshah.github.io'),
     openGraph: {
-        title: 'Portfolio - Adrian Shahnazari Darcheh',
+        title: 'Adrian Shahnazari',
         description:
             'Personal portfolio of Adrian Shahnazari Darcheh, showcasing projects, experience, and technical skills.',
         url: '/',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary',
-        title: 'Portfolio - Adrian Shahnazari Darcheh',
+        title: 'Adrian Shahnazari',
         description:
             'Explore Adrian Shahnazari Darcheh\'s portfolio projects, experience, and technical work.',
         images: ['/icon.svg'],
@@ -99,7 +99,7 @@ export default function RootLayout({
                     </a> */}
                         <Navbar />
                         <HashScroll />
-                        <main>{children}</main>
+                        <main className="pb-28 xl:pb-0">{children}</main>
                         <Footer />
 
                         <SidebarDock />

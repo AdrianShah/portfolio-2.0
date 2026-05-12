@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element -- Hover preview uses project thumbnail URLs (local or remote). */
 'use client';
+import { useLanguage } from '@/components/LanguageProvider';
 import SectionTitle from '@/components/SectionTitle';
 import { PROJECTS } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import Image from 'next/image';
 import React, { useRef, useState, MouseEvent } from 'react';
 import Project from './Project';
 
@@ -15,7 +16,7 @@ const ProjectList = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectListRef = useRef<HTMLDivElement>(null);
     const imageContainer = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
+    const { copy } = useLanguage();
     const [selectedProject, setSelectedProject] = useState<string | null>(
         PROJECTS[0].slug,
     );
@@ -106,7 +107,7 @@ const ProjectList = () => {
     return (
         <section className="pb-section" id="selected-projects">
             <div className="container">
-                <SectionTitle title="SELECTED PROJECTS" />
+                <SectionTitle title={copy.projects.sectionTitle} />
 
                 <div className="group/projects relative" ref={containerRef}>
                     {selectedProject !== null && (
@@ -115,11 +116,11 @@ const ProjectList = () => {
                             ref={imageContainer}
                         >
                             {PROJECTS.map((project) => (
-                                <Image
+                                <img
                                     src={project.thumbnail}
-                                    alt="Project"
-                                    width="400"
-                                    height="500"
+                                    alt=""
+                                    width={400}
+                                    height={500}
                                     className={cn(
                                         'absolute inset-0 transition-all duration-500 w-full h-full object-cover',
                                         {
@@ -128,8 +129,9 @@ const ProjectList = () => {
                                                 selectedProject,
                                         },
                                     )}
-                                    ref={imageRef}
                                     key={project.slug}
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             ))}
                         </div>

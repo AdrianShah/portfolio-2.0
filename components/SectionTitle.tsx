@@ -1,6 +1,10 @@
+'use client';
+
 import { ReactNode } from 'react';
-import { SectionFlower } from './icons';
+import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
+
+const TriondaBall = dynamic(() => import('./TriondaBall'), { ssr: false });
 
 interface Props {
     icon?: ReactNode;
@@ -25,13 +29,7 @@ const SectionTitle = ({ icon, title, className, classNames }: Props) => {
             {icon ? (
                 icon
             ) : (
-                <SectionFlower
-                    width={25}
-                    className={cn(
-                        'animate-spin duration-7000',
-                        classNames?.icon,
-                    )}
-                />
+                <TriondaBall size={32} className={classNames?.icon} />
             )}
             <h2
                 className={cn(

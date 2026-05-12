@@ -182,12 +182,9 @@ const ProjectDetails = ({ project }: Props) => {
                     {project.images.map((image) => (
                         <div
                             key={image}
-                            className="group relative w-full aspect-[750/400] bg-background-light"
+                            className="group relative w-full aspect-[750/400] bg-background-light bg-cover bg-center bg-no-repeat"
                             style={{
                                 backgroundImage: `url(${image})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center 50%',
-                                backgroundRepeat: 'no-repeat',
                             }}
                         >
                             <a

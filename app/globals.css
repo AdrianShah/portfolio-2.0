@@ -4,33 +4,58 @@
 
 @layer base {
     :root {
-        --background: 0 0% 13%;
-        --background-light: 0 0% 19%;
-        --foreground: 0 0% 87%;
+        --background: 223 30% 8%;
+        --background-light: 223 24% 13%;
+        --foreground: 0 0% 92%;
 
-        --card: 0 0% 3.9%;
+        --card: 223 24% 11%;
         --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
+        --popover: 223 24% 11%;
         --popover-foreground: 0 0% 98%;
 
-        --primary: 140 100% 47%;
-        --primary-foreground: 0 0% 13%;
-        --secondary: 193 100% 47%;
-        --secondary-foreground: 0 0% 13%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 71%;
-        --accent: 0 0% 14.9%;
+        --primary: 358 84% 32%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 358 84% 32%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 223 20% 15%;
+        --muted-foreground: 0 0% 72%;
+        --accent: 358 84% 32%;
         --accent-foreground: 0 0% 98%;
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 24%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
+        --border: 223 18% 22%;
+        --input: 223 20% 15%;
+        --ring: 358 84% 32%;
         --chart-1: 220 70% 50%;
         --chart-2: 160 60% 45%;
         --chart-3: 30 80% 55%;
         --chart-4: 280 65% 60%;
         --chart-5: 340 75% 55%;
+    }
+
+    .light {
+        --background: 38 22% 80%;
+        --background-light: 38 20% 76%;
+        --foreground: 223 32% 14%;
+
+        --card: 38 22% 84%;
+        --card-foreground: 223 30% 12%;
+        --popover: 38 22% 84%;
+        --popover-foreground: 223 30% 12%;
+
+        --primary: 358 84% 32%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 358 84% 32%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 38 14% 70%;
+        --muted-foreground: 223 14% 30%;
+        --accent: 358 84% 32%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 72% 55%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 38 14% 66%;
+        --input: 38 14% 66%;
+        --ring: 358 84% 32%;
     }
 }
 
@@ -43,6 +68,14 @@
     }
     body {
         @apply bg-background text-foreground font-roboto-flex;
+    }
+
+    html {
+        color-scheme: dark;
+    }
+
+    html.light {
+        color-scheme: light;
     }
 }
 

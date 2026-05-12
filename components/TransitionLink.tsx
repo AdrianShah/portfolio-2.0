@@ -22,31 +22,45 @@ const TransitionLink = ({
 
     const { contextSafe } = useGSAP(() => {});
 
-    const handleLinkClick = contextSafe(
-        async (e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.preventDefault();
+    const navigateDirect = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        if (back) {
+            router.back();
+        } else if (href) {
+            router.push(href.toString());
+        } else if (onClick) {
+            onClick(e);
+        }
+    };
 
-            gsap.set('.page-transition', { yPercent: 100 });
-            gsap.set('.page-transition--inner', { yPercent: 100 });
+    const navigateWithTransition = contextSafe
+        ? contextSafe(async (e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.preventDefault();
 
-            const tl = gsap.timeline();
+              gsap.set('.page-transition', { yPercent: 100 });
+              gsap.set('.page-transition--inner', { yPercent: 100 });
 
-            tl.to('.page-transition', {
-                yPercent: 0,
-                duration: 0.3,
-            });
+              const tl = gsap.timeline();
 
-            tl.then(() => {
-                if (back) {
-                    router.back();
-                } else if (href) {
-                    router.push(href.toString());
-                } else if (onClick) {
-                    onClick(e);
-                }
-            });
-        },
-    );
+              tl.to('.page-transition', {
+                  yPercent: 0,
+                  duration: 0.3,
+              });
+
+              tl.then(() => {
+                  if (back) {
+                      router.back();
+                  } else if (href) {
+                      router.push(href.toString());
+                  } else if (onClick) {
+                      onClick(e);
+                  }
+              });
+          })
+        : undefined;
+
+    const handleLinkClick =
+        navigateWithTransition ?? navigateDirect;
 
     return (
         <Link href={href} {...rest} onClick={handleLinkClick}>

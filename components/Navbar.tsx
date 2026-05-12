@@ -2,9 +2,9 @@
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { MoveUpRight } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
-
+import { usePathname, useRouter } from 'next/navigation';
+import { SOCIAL_LINKS } from '@/lib/data';
+import { useLanguage } from '@/components/LanguageProvider';
 const COLORS = [
     'bg-yellow-500 text-black',
     'bg-blue-500 text-white',
@@ -12,28 +12,67 @@ const COLORS = [
     'bg-indigo-500 text-white',
 ];
 
-const MENU_LINKS = [
-    {
-        name: 'Home',
-        url: '/',
-    },
-    {
-        name: 'About Me',
-        url: '/#about-me',
-    },
-    {
-        name: 'Experience',
-        url: '/#my-experience',
-    },
-    {
-        name: 'Projects',
-        url: '/#selected-projects',
-    },
-];
-
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
+    const { copy } = useLanguage();
+
+    const navigateFromMenu = (url: string) => {
+        setIsMenuOpen(false);
+
+        if (!url.includes('#')) {
+            router.push(url);
+            if (url === '/') {
+                window.setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 0);
+            }
+            return;
+        }
+
+        const [pathPart, hashPart] = url.split('#');
+        const basePath = pathPart || '/';
+
+        if (!hashPart || basePath !== '/') {
+            router.push(url);
+            return;
+        }
+
+        const scrollToId = () => {
+            document.getElementById(hashPart)?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+            window.history.replaceState(null, '', `#${hashPart}`);
+        };
+
+        if (pathname === '/') {
+            scrollToId();
+        } else {
+            router.push('/');
+            window.setTimeout(scrollToId, 160);
+        }
+    };
+
+    const MENU_LINKS = [
+        {
+            name: copy.nav.home,
+            url: '/',
+        },
+        {
+            name: copy.nav.about,
+            url: '/#about-me',
+        },
+        {
+            name: copy.nav.experience,
+            url: '/#my-experience',
+        },
+        {
+            name: copy.nav.projects,
+            url: '/#selected-projects',
+        },
+    ];
 
     return (
         <>
@@ -95,18 +134,30 @@ const Navbar = () => {
                     <div className="flex gap-10 lg:justify-between max-lg:flex-col w-full">
                         <div className="max-lg:order-2">
                             <p className="text-muted-foreground mb-5 md:mb-8">
-                                SOCIAL
+                                {copy.nav.social}
                             </p>
                             <ul className="space-y-3">
                                 {SOCIAL_LINKS.map((link) => (
                                     <li key={link.name}>
                                         <a
                                             href={link.url}
-                                            target="_blank"
-                                            rel="noreferrer"
+                                            target={
+                                                link.name === 'email'
+                                                    ? undefined
+                                                    : '_blank'
+                                            }
+                                            rel={
+                                                link.name === 'email'
+                                                    ? undefined
+                                                    : 'noreferrer'
+                                            }
                                             className="text-lg capitalize hover:underline"
                                         >
-                                            {link.name}
+                                            {link.name === 'email'
+                                                ? copy.sidebar.links.email
+                                                : link.name === 'github'
+                                                  ? copy.sidebar.links.github
+                                                  : copy.sidebar.links.linkedin}
                                         </a>
                                     </li>
                                 ))}
@@ -114,16 +165,16 @@ const Navbar = () => {
                         </div>
                         <div className="">
                             <p className="text-muted-foreground mb-5 md:mb-8">
-                                MENU
+                                {copy.nav.menu}
                             </p>
                             <ul className="space-y-3">
                                 {MENU_LINKS.map((link, idx) => (
                                     <li key={link.name}>
                                         <button
-                                            onClick={() => {
-                                                router.push(link.url);
-                                                setIsMenuOpen(false);
-                                            }}
+                                            type="button"
+                                            onClick={() =>
+                                                navigateFromMenu(link.url)
+                                            }
                                             className="group text-xl flex items-center gap-3"
                                         >
                                             <span
@@ -146,12 +197,6 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="w-full max-w-[300px] mx-8 sm:mx-auto">
-                    <p className="text-muted-foreground mb-4">GET IN TOUCH</p>
-                    <a href={`mailto:${GENERAL_INFO.email}`}>
-                        {GENERAL_INFO.email}
-                    </a>
-                </div>
             </div>
         </>
     );
