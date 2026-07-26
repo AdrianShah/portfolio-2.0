@@ -15,7 +15,7 @@ Add five recent projects to the portfolio project list, excluding Hall-Sense (sc
 - New entries in `lib/data.ts` `PROJECTS` array
 - Screenshots under `/public/project-screenshots` captured from live demos (or best available UI for projects without a public deploy)
 - Source and live links where available
-- French translations if the portfolio already mirrors project copy in `LanguageProvider` / i18n (match existing pattern; do not invent a new i18n system)
+- No per-project i18n: `LanguageProvider` only translates chrome (e.g. section titles); project title/description/role stay English in `lib/data.ts`
 
 ### Out of scope
 
@@ -119,8 +119,7 @@ Add five recent projects to the portfolio project list, excluding Hall-Sense (sc
 
 ## Implementation notes
 
-- Follow existing `IProject` fields only — no schema changes unless i18n already requires mirrored strings.
-- Check `LanguageProvider` / any FR project copy; if projects are translated, add FR strings for the five new entries to match.
+- Follow existing `IProject` fields only — no schema or i18n changes for project body copy.
 - Do not add Hall-Sense.
 - Keep stack icons working: only use tech names already mapped in `lib/stackIcons.ts`, or extend the map if new labels are needed for display.
 
