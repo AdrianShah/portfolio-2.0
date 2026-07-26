@@ -26,6 +26,21 @@ export function stackItemIcon(name: string): string {
         Git: `${D}/git/git-original.svg`,
         GitHub: si('github', 'ffffff'),
         'GitHub Actions': si('githubactions', '2088FF'),
+        Python: `${D}/python/python-original.svg`,
+        FastAPI: si('fastapi', '009688'),
+        WebSocket: si('socketdotio', 'ffffff'),
+        Gemini: si('googlegemini', '8E75B2'),
+        'Gemini 2.5': si('googlegemini', '8E75B2'),
+        'Google ADK': si('google', '4285F4'),
+        Pydantic: si('pydantic', 'E92063'),
+        LangGraph: si('langchain', '1C3C3C'),
+        Mapbox: si('mapbox', '4264FB'),
+        Expo: si('expo', 'ffffff'),
+        ElevenLabs: si('elevenlabs', 'ffffff'),
+        'Anam AI': si('openai', 'ffffff'),
+        Cursor: si('cursor', 'ffffff'),
+        'Firebase Auth': `${D}/firebase/firebase-plain.svg`,
+        Firestore: `${D}/firebase/firebase-plain.svg`,
     };
 
     return (

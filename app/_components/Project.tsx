@@ -1,7 +1,9 @@
 /* eslint-disable @next/next/no-img-element -- Project previews use static `/public` screenshots or OG URLs; <img> avoids optimizer setup for mixed sources. */
 'use client';
 
+import { useLanguage } from '@/components/LanguageProvider';
 import TransitionLink from '@/components/TransitionLink';
+import { getProjectLocale } from '@/lib/projectLocales';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -21,6 +23,8 @@ gsap.registerPlugin(useGSAP);
  */
 const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
     const externalLinkSVGRef = useRef<SVGSVGElement>(null);
+    const { language } = useLanguage();
+    const locale = getProjectLocale(language, project.slug);
 
     const { context, contextSafe } = useGSAP(() => {}, {
         scope: externalLinkSVGRef,
@@ -116,7 +120,7 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
                 </div>
                 <div className="">
                     <h4 className="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
-                        {project.title}
+                        {locale.title}
                         <span className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

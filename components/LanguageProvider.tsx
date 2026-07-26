@@ -40,6 +40,12 @@ export type LanguageCopy = {
     };
     projects: {
         sectionTitle: string;
+        labels: {
+            year: string;
+            tech: string;
+            description: string;
+            role: string;
+        };
     };
     footer: {
         prompt: string;
@@ -107,6 +113,12 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         projects: {
             sectionTitle: 'Selected Projects',
+            labels: {
+                year: 'Year',
+                tech: 'Tech & Technique',
+                description: 'Description',
+                role: 'My Role',
+            },
         },
         footer: {
             prompt: "Let's Connect",
@@ -172,6 +184,12 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         projects: {
             sectionTitle: 'پروژه‌های منتخب',
+            labels: {
+                year: 'سال',
+                tech: 'تکنولوژی و تکنیک',
+                description: 'توضیحات',
+                role: 'نقش من',
+            },
         },
         footer: {
             prompt: "Let's Connect",
@@ -237,6 +255,12 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         projects: {
             sectionTitle: 'Επιλεγμένα Έργα',
+            labels: {
+                year: 'Έτος',
+                tech: 'Τεχνολογία & Τεχνική',
+                description: 'Περιγραφή',
+                role: 'Ο Ρόλος Μου',
+            },
         },
         footer: {
             prompt: "Let's Connect",
@@ -246,7 +270,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             home: 'Αρχική',
             about: 'Σχετικά',
             experience: 'Εμπειρία',
-            projects: 'Projects',
+            projects: 'Έργα',
             menu: 'Μενού',
             social: 'Κοινωνικά',
         },

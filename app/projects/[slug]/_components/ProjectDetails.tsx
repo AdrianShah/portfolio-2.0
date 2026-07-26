@@ -1,7 +1,9 @@
 'use client';
 import parse from 'html-react-parser';
 import ArrowAnimation from '@/components/ArrowAnimation';
+import { useLanguage } from '@/components/LanguageProvider';
 import TransitionLink from '@/components/TransitionLink';
+import { getProjectLocale } from '@/lib/projectLocales';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -17,6 +19,9 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const ProjectDetails = ({ project }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { language, copy } = useLanguage();
+    const locale = getProjectLocale(language, project.slug);
+    const labels = copy.projects.labels;
 
     useGSAP(
         () => {
@@ -104,7 +109,7 @@ const ProjectDetails = ({ project }: Props) => {
                         <div className="flex items-start gap-6 mx-auto mb-10 max-w-[635px]">
                             <h1 className="fade-in-later opacity-0 text-4xl md:text-[60px] leading-none font-anton overflow-hidden">
                                 <span className="inline-block">
-                                    {project.title}
+                                    {locale.title}
                                 </span>
                             </h1>
 
@@ -135,14 +140,14 @@ const ProjectDetails = ({ project }: Props) => {
                         <div className="max-w-[635px] space-y-7 pb-20 mx-auto">
                             <div className="fade-in-later">
                                 <p className="text-muted-foreground font-anton mb-3">
-                                    Year
+                                    {labels.year}
                                 </p>
 
                                 <div className="text-lg">{project.year}</div>
                             </div>
                             <div className="fade-in-later">
                                 <p className="text-muted-foreground font-anton mb-3">
-                                    Tech & Technique
+                                    {labels.tech}
                                 </p>
 
                                 <div className="text-lg">
@@ -151,21 +156,21 @@ const ProjectDetails = ({ project }: Props) => {
                             </div>
                             <div className="fade-in-later">
                                 <p className="text-muted-foreground font-anton mb-3">
-                                    Description
+                                    {labels.description}
                                 </p>
 
                                 <div className="text-lg prose-xl markdown-text">
-                                    {parse(project.description)}
+                                    {parse(locale.description)}
                                 </div>
                             </div>
-                            {project.role && (
+                            {locale.role && (
                                 <div className="fade-in-later">
                                     <p className="text-muted-foreground font-anton mb-3">
-                                        My Role
+                                        {labels.role}
                                     </p>
 
                                     <div className="text-lg">
-                                        {parse(project.role)}
+                                        {parse(locale.role)}
                                     </div>
                                 </div>
                             )}

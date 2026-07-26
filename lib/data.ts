@@ -21,6 +21,10 @@ export const SOCIAL_LINKS = [
 
 /** Static captures of the live UI under `/public/project-screenshots`. */
 const shots = {
+    synergo: '/project-screenshots/synergo-main.png',
+    codessey: '/project-screenshots/codessey-main.png',
+    delatio: '/project-screenshots/delatio-main.png',
+    elenchus: '/project-screenshots/elenchus-main.png',
     fileChanger: '/project-screenshots/file-changer-main.png',
     potluck: [
         '/project-screenshots/potluck-landing.png',
@@ -42,6 +46,82 @@ const shots = {
 } as const;
 
 export const PROJECTS: IProject[] = [
+    {
+        title: 'Synergo',
+        slug: 'synergo',
+        year: 2026,
+        description:
+            'Synergo is a live multiplayer AI agent viewer for hackathons and parallel coding sessions. It streams IDE activity, prompts, AI captions, and file diffs from every teammate into one shared board, and flags overlapping edits before they turn into merge conflicts. Contributors join a shared room with a code — no accounts — while a local watcher pushes batched saves over WebSockets to a FastAPI relay that broadcasts to a React dashboard.',
+        role: 'Owned the backend relay: room lifecycle, WebSocket join/broadcast flows for watchers and spectators, activity ingestion (debounced diffs and prompts), and the conflict-detection path that surfaces overlapping file edits. Wired Gemini captioning/conflict labeling as a best-effort AI layer so the demo still works when the model is slow or offline.',
+        techStack: [
+            'TypeScript',
+            'React',
+            'Vite',
+            'FastAPI',
+            'WebSocket',
+            'Gemini',
+        ],
+        thumbnail: shots.synergo,
+        longThumbnail: shots.synergo,
+        images: [shots.synergo],
+        sourceCode: 'https://github.com/AdrianShah/HackDay-HacktheValley',
+        liveUrl: 'https://hackday-agent-viewer.vercel.app',
+    },
+    {
+        title: 'Codessey',
+        slug: 'codessey',
+        year: 2026,
+        description:
+            'Codessey is a multi-agent code review system that ingests pasted code, uploads, or GitHub URLs and produces a structured Markdown report. Four specialist agents (logic, security, readability, performance) run in parallel via Google ADK, then a conductor synthesizes findings with deterministic health scoring, secret redaction, and SSRF-safe GitHub ingestion — built for the GDG YorkU Hackathon.',
+        role: 'Built the product end-to-end outside the backend service layer for now: agent workflow design (fan-out/fan-in specialists + conductor), review UX and report rendering, ingestion/validation flows (chunking, language detect, GitHub URL path), security hardening (injection defenses, redaction), CLI demo path, and overall system architecture for a reliable demo-day experience.',
+        techStack: [
+            'Python',
+            'FastAPI',
+            'Google ADK',
+            'Gemini 2.5',
+            'Pydantic',
+        ],
+        thumbnail: shots.codessey,
+        longThumbnail: shots.codessey,
+        images: [shots.codessey],
+        sourceCode: 'https://github.com/AdrianShah/Codessey',
+        liveUrl: 'https://codessey-review.vercel.app',
+    },
+    {
+        title: 'Delatio',
+        slug: 'delatio',
+        year: 2026,
+        description:
+            'Delatio (CivicVox-Omni) is a local-first, low-latency multimodal emergency intelligence platform from NVIDIA Spark Hack Toronto. A phone camera and mic feed an edge pipeline that classifies hazards, pulls nearby Toronto open-data context (hydrants, RentSafeTO, 311), and streams a dispatch-style report to a coordinator dashboard — designed to keep working without cloud dependency on a GB10 node.',
+        role: 'Built out the mobile experience, got the GB10 agent/inference path running for the demo, and connected the full stack so mobile capture, local agents, and the dashboard stayed in sync during live incident flows.',
+        techStack: [
+            'Next.js',
+            'TypeScript',
+            'FastAPI',
+            'LangGraph',
+            'Mapbox',
+            'Expo',
+        ],
+        thumbnail: shots.delatio,
+        longThumbnail: shots.delatio,
+        images: [shots.delatio],
+        sourceCode: 'https://github.com/AdrianShah/NVIDIA-SparkHacks',
+        liveUrl: 'https://delatio.vercel.app/',
+    },
+    {
+        title: 'Elenchus',
+        slug: 'elenchus',
+        year: 2026,
+        description:
+            'Elenchus is an AI pitch roaster: founders get a short window to pitch their startup to a realistic human avatar that cross-examines like a ruthless VC — no fluff, just the questions that expose weak assumptions. Built in under 90 minutes for Cursor × Toronto Tech Week; won Best Use of ElevenLabs in track.',
+        role: 'Owned the frontend UI/UX and co-led the demo pitch — shaping the product narrative, live presentation, and the interface founders use to face the avatar under time pressure.',
+        techStack: ['TypeScript', 'ElevenLabs', 'Anam AI', 'Cursor'],
+        thumbnail: shots.elenchus,
+        longThumbnail: shots.elenchus,
+        images: [shots.elenchus],
+        sourceCode: 'https://github.com/AppleAyaan/elenchus',
+        liveUrl: 'https://useelenchus.vercel.app/',
+    },
     {
         title: 'File Changer',
         slug: 'file-changer',
