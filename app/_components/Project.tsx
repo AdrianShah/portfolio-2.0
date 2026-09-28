@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element -- Project previews use static `/public` screenshots or OG URLs; <img> avoids optimizer setup for mixed sources. */
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/components/LanguageProvider';
 import TransitionLink from '@/components/TransitionLink';
 import { getProjectLocale } from '@/lib/projectLocales';
@@ -102,14 +102,12 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
         >
             {selectedProject === null && (
                 <div className="relative mb-6 aspect-[3/2] w-full overflow-hidden">
-                    <img
+                    <Image
                         src={project.thumbnail}
-                        alt=""
-                        width={800}
-                        height={420}
-                        className="h-full w-full object-cover object-top"
-                        loading="lazy"
-                        decoding="async"
+                        alt={`${locale.title} screenshot`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 800px"
+                        className="object-cover object-top"
                     />
                 </div>
             )}

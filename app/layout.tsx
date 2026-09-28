@@ -13,7 +13,10 @@ import { LanguageProvider } from '@/components/LanguageProvider';
 import HashScroll from '@/components/HashScroll';
 import CustomCursor from '@/components/CustomCursor';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import Script from 'next/script';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+
+/** Set NEXT_PUBLIC_GA_ID in the environment to enable Google Analytics. */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const antonFont = Anton({
     weight: '400',
@@ -29,34 +32,33 @@ const robotoFlex = Roboto_Flex({
 });
 
 export const metadata: Metadata = {
-    title: 'Adrian Shahnazari',
-    description:
-        'Personal portfolio of Adrian Shahnazari Darcheh, a first-year Computer Engineering student building full-stack projects and polished user experiences.',
-    metadataBase: new URL('https://adrianshah.github.io'),
+    title: {
+        default: SITE_NAME,
+        template: `%s · ${SITE_NAME}`,
+    },
+    description: SITE_DESCRIPTION,
+    metadataBase: new URL(SITE_URL),
+    alternates: { canonical: '/' },
     openGraph: {
-        title: 'Adrian Shahnazari',
-        description:
-            'Personal portfolio of Adrian Shahnazari Darcheh, showcasing projects, experience, and technical skills.',
+        title: SITE_NAME,
+        description: SITE_DESCRIPTION,
         url: '/',
-        siteName: 'Adrian Shahnazari Portfolio',
+        siteName: `${SITE_NAME} Portfolio`,
         type: 'website',
-        images: [
-            {
-                url: '/icon.svg',
-                type: 'image/svg+xml',
-            },
-        ],
+        locale: 'en_CA',
     },
     twitter: {
-        card: 'summary',
-        title: 'Adrian Shahnazari',
-        description:
-            'Explore Adrian Shahnazari Darcheh\'s portfolio projects, experience, and technical work.',
-        images: ['/icon.svg'],
+        card: 'summary_large_image',
+        title: SITE_NAME,
+        description: SITE_DESCRIPTION,
     },
     icons: {
-        icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/icon.svg', type: 'image/svg+xml' },
+        ],
     },
+    manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({
@@ -66,17 +68,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <GoogleAnalytics gaId="G-MHLY1LNGY5" />
-            <Script id="hotjar" strategy="afterInteractive">
-                {`(function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:6380611,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
-            </Script>
+            {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
             <body
                 className={`${antonFont.variable} ${robotoFlex.variable} antialiased`}
             >
@@ -88,15 +80,6 @@ export default function RootLayout({
                     }}
                 >
                     <LanguageProvider>
-                        {/* <a
-                        href="https://forms.gle/t73XYJgWD5cJNr6e8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 block bg-black text-center z-[1] text-sm py-2 hover:text-primary transition-all"
-                    >
-                        Frontend dev? I&apos;ll help you polish your resume —
-                        completely free.
-                    </a> */}
                         <Navbar />
                         <HashScroll />
                         <main className="pb-28 xl:pb-0">{children}</main>

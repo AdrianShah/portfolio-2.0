@@ -3,6 +3,7 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
+import { hasFinePointer, prefersReducedMotion } from '@/lib/motion';
 
 gsap.registerPlugin(useGSAP);
 
@@ -11,6 +12,7 @@ const CustomCursor = () => {
 
     useGSAP((context, contextSafe) => {
         if (window.innerWidth < 768) return;
+        if (!hasFinePointer() || prefersReducedMotion()) return;
         if (!contextSafe) return;
 
         const handler = contextSafe((event: MouseEvent) => {

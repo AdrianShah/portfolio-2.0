@@ -28,19 +28,19 @@ This repository contains my portfolio source code, project case-study pages, and
 
 ### Prerequisites
 
-- Node.js 18+ recommended
-- pnpm
+- Node.js 20+ recommended
+- npm
 
 ### Installation
 
 ```bash
-pnpm install
+npm install
 ```
 
 ### Run in Development
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -48,16 +48,24 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Production Build
 
 ```bash
-pnpm build
-pnpm start
+npm run build
+npm start
 ```
 
 ## Common Scripts
 
-- `pnpm dev` - Start the local development server
-- `pnpm build` - Create an optimized production build
-- `pnpm start` - Run the production build
-- `pnpm lint` - Run lint checks
+- `npm run dev` - Start the local development server
+- `npm run build` - Create an optimized production build
+- `npm start` - Run the production build
+- `npm run lint` - Run lint checks
+- `npm run typecheck` - Run the TypeScript compiler without emitting
+
+## Environment Variables
+
+All optional. Set them in Vercel (or `.env.local`) as needed.
+
+- `NEXT_PUBLIC_SITE_URL` - Canonical site URL used for metadata, sitemap, robots and Open Graph images (defaults to the Vercel deployment URL in `lib/site.ts`).
+- `NEXT_PUBLIC_GA_ID` - Google Analytics measurement ID. Analytics are disabled when unset.
 
 ## Project Structure
 
@@ -70,7 +78,10 @@ pnpm start
 
 To personalize this portfolio, update profile and project content in:
 
-- `lib/data.ts`
+- `lib/data.ts` - projects and social links
+- `lib/site.ts` - site name, description and canonical URL
+- `lib/stackIcons.ts` - stack groups; icons live in `public/stack`
+- `components/LanguageProvider.tsx` - page copy for each language
 
 Then adjust page copy/styling in the relevant `app` and `components` files as needed.
 

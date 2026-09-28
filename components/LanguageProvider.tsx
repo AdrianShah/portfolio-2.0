@@ -78,13 +78,13 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             title: ['Hello, I’m', 'Adrian.'],
             name: 'Adrian Shahnazari Darcheh',
             description:
-                'A first-year Computer Engineering student at York University. I document my journey here as I explore software, AI, and technology constantly learning, building, and evolving.',
+                'A second-year Computer Engineering student at York University. I document my journey here as I explore software, AI, and technology constantly learning, building, and evolving.',
             status: 'Open to learning, collaboration, and internships.',
-            stats: ['1st', 'Full', 'UI + API'],
+            stats: ['2nd', 'Full', 'UI + API'],
         },
         about: {
             heading:
-                'I lead with empathy for the user pairing thoughtful design, pragmatic engineering, and the curiosity that comes with being a first-year computer engineering student.',
+                'I lead with empathy for the user pairing thoughtful design, pragmatic engineering, and the curiosity that comes with being a second-year computer engineering student.',
             intro: 'Hi, I\'m Adrian Shahnazari Darcheh.',
             body: 'I\'m a fullstack engineer in progress, focused on turning ideas into reliable products and polished user experiences. My approach focuses on performance, clarity, accessibility, and responsiveness so the final product feels solid on both desktop and mobile.',
         },
@@ -92,7 +92,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             sectionTitle: 'My Experience',
             recent: {
                 title: 'Prep / Line Cook',
-                company: "Moxie's Bar & Grill — Markham, ON",
+                company: "Moxie's Bar & Grill, Markham, ON",
                 duration: 'Sep. 2024 – Dec. 2024',
                 bullets: [
                     'Executed high-volume food preparation with rigorous attention to detail and quality control under time pressure.',
@@ -102,7 +102,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             },
             previous: {
                 title: 'Office Assistant & Data Operations',
-                company: 'Tosan Transportation — Vaughan, ON',
+                company: 'Tosan Transportation, Vaughan, ON',
                 duration: 'Feb. 2022 – Jun. 2022',
                 bullets: [
                     'Managed high-volume document scanning, filing, and data entry workflows, maintaining accuracy across digital records systems.',
@@ -149,13 +149,13 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             title: ['سلام، من', 'آدریان هستم.'],
             name: ' آدریان شاه نظری درچه',
             description:
-                'دانشجوی سال اول مهندسی کامپیوتر در دانشگاه یورک هستم. اینجا مسیرم را در دنیای شاه نظری درچههوش مصنوعی و فناوری ثبت می‌کنم؛ همیشه در حال یادگیری، ساختن و رشد کردن.',
+                'دانشجوی سال دوم مهندسی کامپیوتر در دانشگاه یورک هستم. اینجا مسیرم را در دنیای شاه نظری درچههوش مصنوعی و فناوری ثبت می‌کنم؛ همیشه در حال یادگیری، ساختن و رشد کردن.',
             status: 'آماده یادگیری، همکاری و فرصت‌های کارآموزی.',
-            stats: ['سال اول', 'فول‌استک', 'رابط و API'],
+            stats: ['سال دوم', 'فول‌استک', 'رابط و API'],
         },
         about: {
             heading:
-                'اولویت من درک نیاز کاربر است؛ ترکیبی از طراحی دقیق، مهندسی عملی و همان کنجکاوی‌ای که به‌عنوان دانشجوی سال اول مهندسی کامپیوتر همراه من است.',
+                'اولویت من درک نیاز کاربر است؛ ترکیبی از طراحی دقیق، مهندسی عملی و همان کنجکاوی‌ای که به‌عنوان دانشجوی سال دوم مهندسی کامپیوتر همراه من است.',
             intro: 'سلام، من آدریان شاه نظری درچه هستم',
             body: 'من در مسیر تبدیل شدن به یک فول‌استک انجینیر هستم و روی ساخت محصول‌های قابل‌اعتماد و تجربه‌های کاربری صیقلی تمرکز دارم. اولویت من عملکرد، شفافیت، دسترس‌ پذیری و واکنش‌ گرایی است تا نتیجه نهایی روی دسکتاپ و موبایل محکم و خوب به نظر برسد.',
         },
@@ -163,7 +163,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             sectionTitle: 'تجربه من',
             recent: {
                 title: 'آشپز پرپ / لاین کوک',
-                company: 'موکسیز بار اند گریل — مارکم، اونتاریو',
+                company: 'موکسیز بار اند گریل، مارکم، اونتاریو',
                 duration: 'سپتامبر ۲۰۲۴ – دسامبر ۲۰۲۴',
                 bullets: [
                     'آماده‌سازی غذا با حجم بالا، با دقت بالا و کنترل کیفیت دقیق تحت فشار زمانی.',
@@ -173,7 +173,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             },
             previous: {
                 title: 'دستیار اداری و عملیات داده',
-                company: 'توسن ترنسپورتیشن — وان، اونتاریو',
+                company: 'توسن ترنسپورتیشن، وان، اونتاریو',
                 duration: 'فوریه ۲۰۲۲ – ژوئن ۲۰۲۲',
                 bullets: [
                     'مدیریت اسکن، بایگانی و ورود داده با حجم بالا و حفظ دقت در سیستم‌های ثبت دیجیتال.',
@@ -220,13 +220,13 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             title: ['Γεια, είμαι ο', 'Αντριάν.'],
             name: 'Αντριάν Σιαχαναζάρι Νταρτζε',
             description:
-                'Φοιτητής πρώτου έτους στη Μηχανική Υπολογιστών στο York University. Καταγράφω εδώ τη διαδρομή μου καθώς εξερευνώ λογισμικό, AI και τεχνολογία, μαθαίνοντας, χτίζοντας και εξελίσσοντας συνεχώς.',
+                'Φοιτητής δεύτερου έτους στη Μηχανική Υπολογιστών στο York University. Καταγράφω εδώ τη διαδρομή μου καθώς εξερευνώ λογισμικό, AI και τεχνολογία, μαθαίνοντας, χτίζοντας και εξελίσσοντας συνεχώς.',
             status: 'Ανοιχτός σε μάθηση, συνεργασία και πρακτική άσκηση.',
-            stats: ['1ο', 'Full', 'UI + API'],
+            stats: ['2ο', 'Full', 'UI + API'],
         },
         about: {
             heading:
-                'Ξεκινώ από τον χρήστη: συνδυάζω προσεκτικό σχεδιασμό, ρεαλιστική μηχανική και την περιέργεια ενός φοιτητή πρώτου έτους στη Μηχανική Υπολογιστών.',
+                'Ξεκινώ από τον χρήστη: συνδυάζω προσεκτικό σχεδιασμό, ρεαλιστική μηχανική και την περιέργεια ενός φοιτητή δεύτερου έτους στη Μηχανική Υπολογιστών.',
             intro: 'Γεια, είμαι ο Αντριάν Σιαχαναζάρι Νταρτζε.',
             body: 'Εξελίσσομαι σε fullstack engineer και επικεντρώνομαι στη δημιουργία αξιόπιστων προϊόντων και καλοδουλεμένων εμπειριών χρήστη. Δίνω προτεραιότητα στην απόδοση, τη σαφήνεια, την προσβασιμότητα και την προσαρμοστικότητα ώστε το τελικό αποτέλεσμα να λειτουργεί σωστά σε desktop και mobile.',
         },
@@ -234,7 +234,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             sectionTitle: 'Η Εμπειρία Μου',
             recent: {
                 title: 'Prep / Line Cook',
-                company: "Moxie's Bar & Grill — Markham, ON",
+                company: "Moxie's Bar & Grill, Markham, ON",
                 duration: 'Σεπτ. 2024 – Δεκ. 2024',
                 bullets: [
                     'Εκτέλεση προετοιμασίας φαγητού μεγάλης κλίμακας με αυστηρή προσοχή στη λεπτομέρεια και έλεγχο ποιότητας υπό πίεση χρόνου.',
@@ -244,7 +244,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
             },
             previous: {
                 title: 'Βοηθός Γραφείου & Λειτουργιών Δεδομένων',
-                company: 'Tosan Transportation — Vaughan, ON',
+                company: 'Tosan Transportation, Vaughan, ON',
                 duration: 'Φεβ. 2022 – Ιούν. 2022',
                 bullets: [
                     'Διαχείριση μεγάλου όγκου σάρωσης εγγράφων, αρχειοθέτησης και καταχώρησης δεδομένων, διατηρώντας ακρίβεια στα ψηφιακά συστήματα αρχείων.',

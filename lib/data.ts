@@ -21,6 +21,10 @@ export const SOCIAL_LINKS = [
 
 /** Static captures of the live UI under `/public/project-screenshots`. */
 const shots = {
+    humancraft: [
+        '/project-screenshots/humancraft-main.jpg',
+        '/project-screenshots/humancraft-demo.jpg',
+    ],
     synergo: '/project-screenshots/synergo-main.png',
     codessey: '/project-screenshots/codessey-main.png',
     delatio: '/project-screenshots/delatio-main.png',
@@ -45,13 +49,44 @@ const shots = {
     ],
 } as const;
 
-export const PROJECTS: IProject[] = [
+/**
+ * Dates come from each repository's GitHub `created_at` where public.
+ * Entries marked "approximate" have no public repo; adjust as needed.
+ * The list is sorted newest-first on export, so order here does not matter.
+ */
+const PROJECT_ENTRIES: IProject[] = [
+    {
+        title: 'HumanCraft',
+        slug: 'humancraft',
+        year: 2026,
+        date: '2026-09-19',
+        description:
+            'HumanCraft lets you play as yourself in Minecraft, built at Hack the North 2026. Two LiDAR iPhones capture a real person as an RGB point cloud, a Python backend calibrates the cameras, merges both views, and fits anatomical hitboxes with MediaPipe, and a Fabric mod renders the scan as a live Minecraft player. Minecraft still owns health, movement, collision, and damage while HumanCraft supplies the body, including physical punches from tracked wrist swings.',
+        role: 'Top committer on the team. Built the Python backend end-to-end: the HMC1 binary codec, two-device frame pairing and clock-offset estimation, ChArUco and person-based camera calibration, depth unprojection and multi-view reconstruction, and the FastAPI capture/character WebSockets. Brought up the real iPhone hardware path (Bonjour discovery, LiDAR depth segmentation) and hardened in-game anchoring so the live figure stayed stable during the demo.',
+        techStack: [
+            'Python',
+            'FastAPI',
+            'Swift',
+            'ARKit',
+            'MediaPipe',
+            'OpenCV',
+            'Java',
+            'Fabric',
+        ],
+        thumbnail: shots.humancraft[0],
+        longThumbnail: shots.humancraft[0],
+        images: [...shots.humancraft],
+        sourceCode:
+            'https://github.com/elijahzhao24/minecraft_hack_the_north',
+        devpost: 'https://devpost.com/software/humancraft',
+    },
     {
         title: 'Synergo',
         slug: 'synergo',
         year: 2026,
+        date: '2026-07-01', // approximate; repository is private
         description:
-            'Synergo is a live multiplayer AI agent viewer for hackathons and parallel coding sessions. It streams IDE activity, prompts, AI captions, and file diffs from every teammate into one shared board, and flags overlapping edits before they turn into merge conflicts. Contributors join a shared room with a code — no accounts — while a local watcher pushes batched saves over WebSockets to a FastAPI relay that broadcasts to a React dashboard.',
+            'Synergo is a live multiplayer AI agent viewer for hackathons and parallel coding sessions. It streams IDE activity, prompts, AI captions, and file diffs from every teammate into one shared board, and flags overlapping edits before they turn into merge conflicts. Contributors join a shared room with a code (no accounts) while a local watcher pushes batched saves over WebSockets to a FastAPI relay that broadcasts to a React dashboard.',
         role: 'Owned the backend relay: room lifecycle, WebSocket join/broadcast flows for watchers and spectators, activity ingestion (debounced diffs and prompts), and the conflict-detection path that surfaces overlapping file edits. Wired Gemini captioning/conflict labeling as a best-effort AI layer so the demo still works when the model is slow or offline.',
         techStack: [
             'TypeScript',
@@ -64,15 +99,16 @@ export const PROJECTS: IProject[] = [
         thumbnail: shots.synergo,
         longThumbnail: shots.synergo,
         images: [shots.synergo],
-        sourceCode: 'https://github.com/AdrianShah/HackDay-HacktheValley',
+        // sourceCode intentionally omitted: the repository is not public.
         liveUrl: 'https://hackday-agent-viewer.vercel.app',
     },
     {
         title: 'Codessey',
         slug: 'codessey',
         year: 2026,
+        date: '2026-06-21',
         description:
-            'Codessey is a multi-agent code review system that ingests pasted code, uploads, or GitHub URLs and produces a structured Markdown report. Four specialist agents (logic, security, readability, performance) run in parallel via Google ADK, then a conductor synthesizes findings with deterministic health scoring, secret redaction, and SSRF-safe GitHub ingestion — built for the GDG YorkU Hackathon.',
+            'Codessey is a multi-agent code review system that ingests pasted code, uploads, or GitHub URLs and produces a structured Markdown report. Four specialist agents (logic, security, readability, performance) run in parallel via Google ADK, then a conductor synthesizes findings with deterministic health scoring, secret redaction, and SSRF-safe GitHub ingestion. Built for the GDG YorkU Hackathon.',
         role: 'Built the product end-to-end outside the backend service layer for now: agent workflow design (fan-out/fan-in specialists + conductor), review UX and report rendering, ingestion/validation flows (chunking, language detect, GitHub URL path), security hardening (injection defenses, redaction), CLI demo path, and overall system architecture for a reliable demo-day experience.',
         techStack: [
             'Python',
@@ -91,8 +127,9 @@ export const PROJECTS: IProject[] = [
         title: 'Delatio',
         slug: 'delatio',
         year: 2026,
+        date: '2026-05-29',
         description:
-            'Delatio (CivicVox-Omni) is a local-first, low-latency multimodal emergency intelligence platform from NVIDIA Spark Hack Toronto. A phone camera and mic feed an edge pipeline that classifies hazards, pulls nearby Toronto open-data context (hydrants, RentSafeTO, 311), and streams a dispatch-style report to a coordinator dashboard — designed to keep working without cloud dependency on a GB10 node.',
+            'Delatio (CivicVox-Omni) is a local-first, low-latency multimodal emergency intelligence platform from NVIDIA Spark Hack Toronto. A phone camera and mic feed an edge pipeline that classifies hazards, pulls nearby Toronto open-data context (hydrants, RentSafeTO, 311), and streams a dispatch-style report to a coordinator dashboard, designed to keep working without cloud dependency on a GB10 node.',
         role: 'Built out the mobile experience, got the GB10 agent/inference path running for the demo, and connected the full stack so mobile capture, local agents, and the dashboard stayed in sync during live incident flows.',
         techStack: [
             'Next.js',
@@ -112,9 +149,10 @@ export const PROJECTS: IProject[] = [
         title: 'Elenchus',
         slug: 'elenchus',
         year: 2026,
+        date: '2026-05-27',
         description:
-            'Elenchus is an AI pitch roaster: founders get a short window to pitch their startup to a realistic human avatar that cross-examines like a ruthless VC — no fluff, just the questions that expose weak assumptions. Built in under 90 minutes for Cursor × Toronto Tech Week; won Best Use of ElevenLabs in track.',
-        role: 'Owned the frontend UI/UX and co-led the demo pitch — shaping the product narrative, live presentation, and the interface founders use to face the avatar under time pressure.',
+            'Elenchus is an AI pitch roaster: founders get a short window to pitch their startup to a realistic human avatar that cross-examines like a ruthless VC: no fluff, just the questions that expose weak assumptions. Built in under 90 minutes for Cursor × Toronto Tech Week; won Best Use of ElevenLabs in track.',
+        role: 'Owned the frontend UI/UX and co-led the demo pitch, shaping the product narrative, live presentation, and the interface founders use to face the avatar under time pressure.',
         techStack: ['TypeScript', 'ElevenLabs', 'Anam AI', 'Cursor'],
         thumbnail: shots.elenchus,
         longThumbnail: shots.elenchus,
@@ -126,6 +164,7 @@ export const PROJECTS: IProject[] = [
         title: 'File Changer',
         slug: 'file-changer',
         year: 2026,
+        date: '2026-05-01', // approximate; desktop release still in progress
         description:
             'A local-first desktop file conversion and compression utility focused on speed and privacy. It supports queue-based batch processing, configurable output formats, conflict handling, worker concurrency, and integrated Sharp/FFmpeg pipelines with drag-and-drop input. The desktop release is still in progress, so there is no public repository link yet.',
         role: 'Designed as a desktop workflow tool with conversion-focused UX and local processing.',
@@ -145,6 +184,7 @@ export const PROJECTS: IProject[] = [
         title: 'Hackathon 1 (Potluckio)',
         slug: 'hackathon-1-potluckio',
         year: 2026,
+        date: '2026-04-14',
         description:
             'A collaborative event planning app for potlucks where hosts can create events, share join links, and coordinate contributions so guests can claim what they are bringing. It includes account access, event management flows, and a simple dashboard experience for managing hosted events.',
         role: 'Worked on backend architecture and Firebase integration while refining the production-ready version.',
@@ -160,7 +200,7 @@ export const PROJECTS: IProject[] = [
         longThumbnail: shots.potluck[0],
         images: [...shots.potluck],
         sourceCode:
-            'https://github.com/AdrianShah/CTRL-DEL-HACK-2.0---Potluck-App',
+            'https://github.com/AdrianShah/CTRL-DEL-HACK-2.0---Potluck-App.',
         liveUrl:
             'https://adrianshah.github.io/CTRL-DEL-HACK-2.0---Potluck-App./',
     },
@@ -168,6 +208,7 @@ export const PROJECTS: IProject[] = [
         title: 'WPM ATLAS',
         slug: 'wpm-game',
         year: 2026,
+        date: '2026-03-31',
         description:
             'A typing-speed web app with arcade-style rounds, live WPM feedback, profile progression, and leaderboard competition. Players can customize profile identity, compete across multiple durations and difficulties, and track rank improvements over time.',
         role: 'Built as an interactive practice tool with real-time-oriented backend support.',
@@ -181,12 +222,13 @@ export const PROJECTS: IProject[] = [
         longThumbnail: shots.wpm[0],
         images: [...shots.wpm],
         sourceCode: 'https://github.com/AdrianShah/WPM-ATLAS',
-        liveUrl: 'https://adrianshah.github.io/Typing-Game/',
+        liveUrl: 'https://adrianshah.github.io/WPM-ATLAS/',
     },
     {
         title: 'Portfolio Website',
         slug: 'portfolio-website',
         year: 2026,
+        date: '2026-05-05',
         description:
             'This is my personal portfolio website, built to present projects with interactive transitions, rich case-study pages, responsive layouts, and smooth motion-driven storytelling.',
         role: 'Designed and implemented the full personal brand experience from UI to data structure.',
@@ -201,13 +243,11 @@ export const PROJECTS: IProject[] = [
         longThumbnail: shots.portfolio[0],
         images: [...shots.portfolio],
         sourceCode: 'https://github.com/AdrianShah/portfolio-2.0',
+        liveUrl: 'https://portfolio-20-two.vercel.app/',
     },
 ];
 
-export const MY_EXPERIENCE = [
-    {
-        title: 'First Year Computer Engineering Student',
-        company: 'University Student',
-        duration: 'Current',
-    },
-];
+/** Projects, newest first. */
+export const PROJECTS: IProject[] = [...PROJECT_ENTRIES].sort((a, b) =>
+    b.date.localeCompare(a.date),
+);

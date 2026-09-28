@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element -- Hover preview uses project thumbnail URLs (local or remote). */
 'use client';
+import Image from 'next/image';
 import { useLanguage } from '@/components/LanguageProvider';
 import SectionTitle from '@/components/SectionTitle';
 import { PROJECTS } from '@/lib/data';
@@ -116,13 +116,13 @@ const ProjectList = () => {
                             ref={imageContainer}
                         >
                             {PROJECTS.map((project) => (
-                                <img
+                                <Image
                                     src={project.thumbnail}
                                     alt=""
-                                    width={400}
-                                    height={500}
+                                    fill
+                                    sizes="(max-width: 1280px) 200px, 350px"
                                     className={cn(
-                                        'absolute inset-0 transition-all duration-500 w-full h-full object-cover',
+                                        'transition-all duration-500 object-cover',
                                         {
                                             'opacity-0':
                                                 project.slug !==
@@ -130,8 +130,6 @@ const ProjectList = () => {
                                         },
                                     )}
                                     key={project.slug}
-                                    loading="lazy"
-                                    decoding="async"
                                 />
                             ))}
                         </div>

@@ -1,6 +1,7 @@
 'use client';
 import parse from 'html-react-parser';
 import ArrowAnimation from '@/components/ArrowAnimation';
+import { Devpost } from '@/components/icons';
 import { useLanguage } from '@/components/LanguageProvider';
 import TransitionLink from '@/components/TransitionLink';
 import { getProjectLocale } from '@/lib/projectLocales';
@@ -122,6 +123,17 @@ const ProjectDetails = ({ project }: Props) => {
                                         className="hover:text-primary"
                                     >
                                         <Github size={30} />
+                                    </a>
+                                )}
+                                {project.devpost && (
+                                    <a
+                                        href={project.devpost}
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                        className="hover:text-primary"
+                                        aria-label="Devpost"
+                                    >
+                                        <Devpost size={30} />
                                     </a>
                                 )}
                                 {project.liveUrl && (

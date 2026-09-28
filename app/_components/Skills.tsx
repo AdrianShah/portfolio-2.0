@@ -1,8 +1,9 @@
-/* eslint-disable @next/next/no-img-element -- Stack icons load from external CDNs. */
 'use client';
 
 import SectionTitle from '@/components/SectionTitle';
 import { MY_STACK_GROUPS, stackItemIcon } from '@/lib/stackIcons';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -73,26 +74,33 @@ const Skills = () => {
                             </div>
 
                             <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
-                                {items.map((item) => (
+                                {items.map((item) => {
+                                    const { src, mono } = stackItemIcon(item);
+                                    return (
                                     <div
                                         className="slide-up flex gap-3.5 items-center leading-none"
                                         key={item}
                                     >
                                         <div className="relative size-10 shrink-0 overflow-hidden rounded-sm bg-background-light">
-                                            <img
-                                                src={stackItemIcon(item)}
+                                            <Image
+                                                src={src}
                                                 alt=""
                                                 width={40}
                                                 height={40}
-                                                className="h-full w-full object-contain p-1"
-                                                loading="lazy"
+                                                unoptimized
+                                                className={cn(
+                                                    'h-full w-full object-contain p-1',
+                                                    mono &&
+                                                        'invert [.light_&]:invert-0',
+                                                )}
                                             />
                                         </div>
                                         <span className="text-2xl capitalize">
                                             {item}
                                         </span>
                                     </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     ))}

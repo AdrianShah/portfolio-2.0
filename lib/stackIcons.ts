@@ -1,51 +1,58 @@
-/** Devicon & Simple Icons SVGs (allow-list URLs for <img> / next/image). */
-const D =
-    'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons' as const;
+/**
+ * Stack icons are vendored under `public/stack` so the Stack section never
+ * depends on a third-party CDN at runtime. Sources: Devicon and Simple Icons.
+ *
+ * `mono` marks icons drawn in a single dark colour; those are inverted in
+ * dark mode so they stay visible on the dark background.
+ */
+export type StackIcon = { src: string; mono?: boolean };
 
-const si = (slug: string, color = 'ffffff') =>
-    `https://cdn.simpleicons.org/${slug}/${color}`;
+const icon = (file: string, mono = false): StackIcon => ({
+    src: `/stack/${file}.svg`,
+    mono,
+});
 
-export function stackItemIcon(name: string): string {
-    const map: Record<string, string> = {
-        HTML: `${D}/html5/html5-original.svg`,
-        CSS: `${D}/css3/css3-original.svg`,
-        JavaScript: `${D}/javascript/javascript-original.svg`,
-        TypeScript: `${D}/typescript/typescript-original.svg`,
-        React: `${D}/react/react-original.svg`,
-        'Next.js': `${D}/nextjs/nextjs-original.svg`,
-        'Tailwind CSS': `${D}/tailwindcss/tailwindcss-original.svg`,
-        GSAP: si('greensock', '88CE02'),
-        Electron: `${D}/electron/electron-original.svg`,
-        Vite: `${D}/vitejs/vitejs-original.svg`,
-        'Firebase (Auth + Firestore)': `${D}/firebase/firebase-plain.svg`,
-        Supabase: si('supabase', '3FCF8E'),
-        Convex: si('convex', 'FF6B6B'),
-        Clerk: si('clerk', '6C47FF'),
-        FFmpeg: si('ffmpeg', '007808'),
-        Sharp: si('sharp', '99D071'),
-        Git: `${D}/git/git-original.svg`,
-        GitHub: si('github', 'ffffff'),
-        'GitHub Actions': si('githubactions', '2088FF'),
-        Python: `${D}/python/python-original.svg`,
-        FastAPI: si('fastapi', '009688'),
-        WebSocket: si('socketdotio', 'ffffff'),
-        Gemini: si('googlegemini', '8E75B2'),
-        'Gemini 2.5': si('googlegemini', '8E75B2'),
-        'Google ADK': si('google', '4285F4'),
-        Pydantic: si('pydantic', 'E92063'),
-        LangGraph: si('langchain', '1C3C3C'),
-        Mapbox: si('mapbox', '4264FB'),
-        Expo: si('expo', 'ffffff'),
-        ElevenLabs: si('elevenlabs', 'ffffff'),
-        'Anam AI': si('openai', 'ffffff'),
-        Cursor: si('cursor', 'ffffff'),
-        'Firebase Auth': `${D}/firebase/firebase-plain.svg`,
-        Firestore: `${D}/firebase/firebase-plain.svg`,
-    };
+const ICONS: Record<string, StackIcon> = {
+    HTML: icon('html'),
+    CSS: icon('css'),
+    JavaScript: icon('javascript'),
+    TypeScript: icon('typescript'),
+    React: icon('react'),
+    'Next.js': icon('nextjs', true),
+    'Tailwind CSS': icon('tailwindcss'),
+    GSAP: icon('gsap'),
+    Electron: icon('electron'),
+    Vite: icon('vite'),
+    'Firebase (Auth + Firestore)': icon('firebase'),
+    'Firebase Auth': icon('firebase'),
+    Firestore: icon('firebase'),
+    Supabase: icon('supabase'),
+    Convex: icon('convex'),
+    Clerk: icon('clerk'),
+    FFmpeg: icon('ffmpeg'),
+    Sharp: icon('sharp'),
+    Git: icon('git'),
+    GitHub: icon('github', true),
+    'GitHub Actions': icon('githubactions'),
+    Python: icon('python'),
+    FastAPI: icon('fastapi'),
+    WebSocket: icon('websocket'),
+    Gemini: icon('gemini'),
+    'Gemini 2.5': icon('gemini'),
+    'Google ADK': icon('google'),
+    Pydantic: icon('pydantic'),
+    LangGraph: icon('langchain', true),
+    Mapbox: icon('mapbox'),
+    Expo: icon('expo', true),
+    ElevenLabs: icon('elevenlabs', true),
+    'Anam AI': icon('anam'),
+    Cursor: icon('cursor', true),
+};
 
-    return (
-        map[name] ?? `${D}/github/github-original.svg`
-    );
+const FALLBACK: StackIcon = icon('github', true);
+
+export function stackItemIcon(name: string): StackIcon {
+    return ICONS[name] ?? FALLBACK;
 }
 
 export type StackCategory = { title: string; items: string[] };

@@ -23,29 +23,35 @@ const enFromData = (): ProjectLocaleMap =>
     );
 
 const fa: ProjectLocaleMap = {
+    humancraft: {
+        title: 'HumanCraft',
+        description:
+            'HumanCraft به شما اجازه می‌دهد خودتان را در ماینکرفت بازی کنید، ساخته‌شده در Hack the North 2026. دو آیفون مجهز به LiDAR یک فرد واقعی را به‌صورت ابر نقاط RGB ضبط می‌کنند، بک‌اند پایتون دوربین‌ها را کالیبره می‌کند، دو نما را ادغام می‌کند و با MediaPipe هیت‌باکس‌های آناتومیک می‌سازد، و یک ماد Fabric اسکن را به‌عنوان بازیکن زنده ماینکرفت رندر می‌کند. سلامتی، حرکت، برخورد و آسیب همچنان در اختیار ماینکرفت است و HumanCraft بدن را فراهم می‌کند، حتی مشت‌های فیزیکی از روی حرکت مچ دست.',
+        role: 'بیشترین کامیت در تیم. ساخت کامل بک‌اند پایتون: کدک باینری HMC1، جفت‌سازی فریم‌های دو دستگاه و تخمین اختلاف ساعت، کالیبراسیون دوربین با ChArUco و با خود فرد، unprojection عمق و بازسازی چندنمایی، و وب‌سوکت‌های capture/character در FastAPI. راه‌اندازی مسیر سخت‌افزار واقعی آیفون (کشف Bonjour، بخش‌بندی عمق LiDAR) و پایدارسازی لنگر درون‌بازی تا فیگور زنده در دمو ثابت بماند.',
+    },
     synergo: {
         title: 'Synergo',
         description:
-            'Synergo یک نمایشگر زنده چندنفره برای ایجنت‌های هوش مصنوعی در هکاتون‌ها و جلسات کدنویسی موازی است. فعالیت IDE، پرامپت‌ها، کپشن‌های AI و دیف فایل‌ها را از هر عضو تیم روی یک بورد مشترک استریم می‌کند و ویرایش‌های هم‌پوشان را قبل از تبدیل‌شدن به کانفلیکت مرج علامت می‌زند. شرکت‌کنندگان با یک کد وارد اتاق مشترک می‌شوند — بدون اکانت — و یک watcher محلی ذخیرهٔ دسته‌ای را از طریق WebSocket به رله FastAPI می‌فرستد تا به داشبورد React پخش شود.',
+            'Synergo یک نمایشگر زنده چندنفره برای ایجنت‌های هوش مصنوعی در هکاتون‌ها و جلسات کدنویسی موازی است. فعالیت IDE، پرامپت‌ها، کپشن‌های AI و دیف فایل‌ها را از هر عضو تیم روی یک بورد مشترک استریم می‌کند و ویرایش‌های هم‌پوشان را قبل از تبدیل‌شدن به کانفلیکت مرج علامت می‌زند. شرکت‌کنندگان با یک کد وارد اتاق مشترک می‌شوند (بدون اکانت) و یک watcher محلی ذخیرهٔ دسته‌ای را از طریق WebSocket به رله FastAPI می‌فرستد تا به داشبورد React پخش شود.',
         role: 'مالکیت رله بک‌اند: چرخه عمر اتاق، جریان‌های join/broadcast وب‌سوکت برای watcherها و spectatorها، دریافت فعالیت (دیف و پرامپت با debounce)، و مسیر تشخیص کانفلیکت برای ویرایش‌های هم‌پوشان فایل. لایه کپشن/برچسب‌گذاری کانفلیکت با Gemini به‌صورت best-effort تا دمو حتی با کندی یا قطع مدل هم کار کند.',
     },
     codessey: {
         title: 'Codessey',
         description:
-            'Codessey یک سیستم بازبینی کد چندایجنتی است که کد پیست‌شده، آپلود یا لینک GitHub را می‌گیرد و گزارش ساختاریافته Markdown تولید می‌کند. چهار ایجنت متخصص (منطق، امنیت، خوانایی، عملکرد) به‌صورت موازی با Google ADK اجرا می‌شوند و سپس یک conductor یافته‌ها را با امتیازدهی قطعی، پوشاندن secret و دریافت امن GitHub جمع‌بندی می‌کند — ساخته‌شده برای هکاتون GDG YorkU.',
+            'Codessey یک سیستم بازبینی کد چندایجنتی است که کد پیست‌شده، آپلود یا لینک GitHub را می‌گیرد و گزارش ساختاریافته Markdown تولید می‌کند. چهار ایجنت متخصص (منطق، امنیت، خوانایی، عملکرد) به‌صورت موازی با Google ADK اجرا می‌شوند و سپس یک conductor یافته‌ها را با امتیازدهی قطعی، پوشاندن secret و دریافت امن GitHub جمع‌بندی می‌کند، ساخته‌شده برای هکاتون GDG YorkU.',
         role: 'ساخت محصول به‌صورت end-to-end خارج از لایه سرویس بک‌اند (فعلاً): طراحی workflow ایجنت‌ها (fan-out/fan-in + conductor)، UX بازبینی و رندر گزارش، جریان‌های ingestion/validation (chunking، تشخیص زبان، مسیر URL گیت‌هاب)، سخت‌سازی امنیتی (دفاع در برابر injection، redaction)، مسیر CLI برای دمو، و معماری کلی برای تجربه پایدار روز دمو.',
     },
     delatio: {
         title: 'Delatio',
         description:
-            'Delatio (CivicVox-Omni) یک پلتفرم هوش اضطراری چندرسانه‌ای local-first و کم‌تأخیر از NVIDIA Spark Hack تورنتو است. دوربین و میکروفون گوشی یک پایپ‌لاین لبه‌ای را تغذیه می‌کنند که خطر را طبقه‌بندی می‌کند، زمینه داده باز تورنتو (شیر آتش‌نشانی، RentSafeTO، ۳۱۱) را می‌کشد و گزارش dispatch-style را به داشبورد هماهنگ‌کننده استریم می‌کند — طراحی‌شده برای کار بدون وابستگی ابری روی نود GB10.',
+            'Delatio (CivicVox-Omni) یک پلتفرم هوش اضطراری چندرسانه‌ای local-first و کم‌تأخیر از NVIDIA Spark Hack تورنتو است. دوربین و میکروفون گوشی یک پایپ‌لاین لبه‌ای را تغذیه می‌کنند که خطر را طبقه‌بندی می‌کند، زمینه داده باز تورنتو (شیر آتش‌نشانی، RentSafeTO، ۳۱۱) را می‌کشد و گزارش dispatch-style را به داشبورد هماهنگ‌کننده استریم می‌کند، طراحی‌شده برای کار بدون وابستگی ابری روی نود GB10.',
         role: 'ساخت تجربه موبایل، راه‌اندازی مسیر ایجنت/inference روی GB10 برای دمو، و اتصال کامل استک تا capture موبایل، ایجنت‌های محلی و داشبورد در جریان‌های حادثه زنده همگام بمانند.',
     },
     elenchus: {
         title: 'Elenchus',
         description:
-            'Elenchus یک «پیچ‌روستر» هوش مصنوعی است: بنیان‌گذاران فرصت کوتاهی دارند تا استارتاپشان را به یک آواتار انسان‌مانند ارائه کنند که مثل یک VC بی‌رحم بازجویی می‌کند — بدون تعریف و تمجید، فقط سوال‌هایی که فرض‌های ضعیف را لو می‌دهد. ساخته‌شده در کمتر از ۹۰ دقیقه برای Cursor × Toronto Tech Week؛ برنده Best Use of ElevenLabs در ترک.',
-        role: 'مالکیت frontend UI/UX و هم‌رهبری pitch دمو — شکل‌دادن روایت محصول، ارائه زنده، و رابطی که بنیان‌گذاران زیر فشار زمان با آواتار روبرو می‌شوند.',
+            'Elenchus یک «پیچ‌روستر» هوش مصنوعی است: بنیان‌گذاران فرصت کوتاهی دارند تا استارتاپشان را به یک آواتار انسان‌مانند ارائه کنند که مثل یک VC بی‌رحم بازجویی می‌کند: بدون تعریف و تمجید، فقط سوال‌هایی که فرض‌های ضعیف را لو می‌دهد. ساخته‌شده در کمتر از ۹۰ دقیقه برای Cursor × Toronto Tech Week؛ برنده Best Use of ElevenLabs در ترک.',
+        role: 'مالکیت frontend UI/UX و هم‌رهبری pitch دمو، شکل‌دادن روایت محصول، ارائه زنده، و رابطی که بنیان‌گذاران زیر فشار زمان با آواتار روبرو می‌شوند.',
     },
     'file-changer': {
         title: 'File Changer',
@@ -74,29 +80,35 @@ const fa: ProjectLocaleMap = {
 };
 
 const el: ProjectLocaleMap = {
+    humancraft: {
+        title: 'HumanCraft',
+        description:
+            'Το HumanCraft σε αφήνει να παίξεις ως ο εαυτός σου στο Minecraft, χτισμένο στο Hack the North 2026. Δύο iPhone με LiDAR καταγράφουν έναν πραγματικό άνθρωπο ως RGB point cloud, ένα Python backend βαθμονομεί τις κάμερες, συγχωνεύει τις δύο όψεις και προσαρμόζει ανατομικά hitboxes με MediaPipe, και ένα Fabric mod αποδίδει το scan ως ζωντανό παίκτη Minecraft. Το Minecraft διατηρεί υγεία, κίνηση, συγκρούσεις και ζημιά, ενώ το HumanCraft παρέχει το σώμα, ακόμη και φυσικές γροθιές από κινήσεις του καρπού.',
+        role: 'Top committer της ομάδας. Έχτισα το Python backend end-to-end: HMC1 binary codec, ζευγοποίηση frames δύο συσκευών και εκτίμηση clock offset, βαθμονόμηση καμερών με ChArUco και με το ίδιο το άτομο, depth unprojection και multi-view reconstruction, και τα FastAPI capture/character WebSockets. Έφερα σε λειτουργία το πραγματικό hardware των iPhone (Bonjour discovery, LiDAR depth segmentation) και σταθεροποίησα το in-game anchoring ώστε η ζωντανή φιγούρα να μένει σταθερή στο demo.',
+    },
     synergo: {
         title: 'Synergo',
         description:
-            'Το Synergo είναι ένα live multiplayer AI agent viewer για hackathons και παράλληλες συνεδρίες coding. Μεταδίδει δραστηριότητα IDE, prompts, AI captions και file diffs από κάθε teammate σε έναν κοινό πίνακα και επισημαίνει επικαλυπτόμενες επεξεργασίες πριν γίνουν merge conflicts. Οι contributors μπαίνουν σε κοινό room με κωδικό — χωρίς λογαριασμούς — ενώ ένα τοπικό watcher στέλνει batched saves μέσω WebSockets σε FastAPI relay που κάνει broadcast σε React dashboard.',
+            'Το Synergo είναι ένα live multiplayer AI agent viewer για hackathons και παράλληλες συνεδρίες coding. Μεταδίδει δραστηριότητα IDE, prompts, AI captions και file diffs από κάθε teammate σε έναν κοινό πίνακα και επισημαίνει επικαλυπτόμενες επεξεργασίες πριν γίνουν merge conflicts. Οι contributors μπαίνουν σε κοινό room με κωδικό (χωρίς λογαριασμούς) ενώ ένα τοπικό watcher στέλνει batched saves μέσω WebSockets σε FastAPI relay που κάνει broadcast σε React dashboard.',
         role: 'Ανέλαβα το backend relay: lifecycle δωματίων, WebSocket join/broadcast για watchers και spectators, activity ingestion (debounced diffs και prompts) και τη διαδρομή conflict-detection για overlapping file edits. Σύνδεσα Gemini captioning/conflict labeling ως best-effort AI layer ώστε το demo να δουλεύει ακόμη και όταν το μοντέλο είναι αργό ή offline.',
     },
     codessey: {
         title: 'Codessey',
         description:
-            'Το Codessey είναι σύστημα multi-agent code review που δέχεται pasted code, uploads ή GitHub URLs και παράγει δομημένο Markdown report. Τέσσερις specialist agents (logic, security, readability, performance) τρέχουν παράλληλα μέσω Google ADK και ένας conductor συνθέτει τα findings με deterministic scoring, secret redaction και SSRF-safe GitHub ingestion — για το GDG YorkU Hackathon.',
+            'Το Codessey είναι σύστημα multi-agent code review που δέχεται pasted code, uploads ή GitHub URLs και παράγει δομημένο Markdown report. Τέσσερις specialist agents (logic, security, readability, performance) τρέχουν παράλληλα μέσω Google ADK και ένας conductor συνθέτει τα findings με deterministic scoring, secret redaction και SSRF-safe GitHub ingestion, για το GDG YorkU Hackathon.',
         role: 'Έχτισα το προϊόν end-to-end εκτός του backend service layer προς το παρόν: σχεδιασμός agent workflow (fan-out/fan-in + conductor), review UX και report rendering, ingestion/validation (chunking, language detect, GitHub URL path), security hardening (injection defenses, redaction), CLI demo path και συνολική αρχιτεκτονική για αξιόπιστο demo-day.',
     },
     delatio: {
         title: 'Delatio',
         description:
-            'Το Delatio (CivicVox-Omni) είναι local-first, χαμηλής καθυστέρησης multimodal emergency intelligence πλατφόρμα από το NVIDIA Spark Hack Toronto. Κάμερα και μικρόφωνο τηλεφώνου τροφοδοτούν edge pipeline που ταξινομεί κινδύνους, αντλεί Toronto open-data context (hydrants, RentSafeTO, 311) και στέλνει dispatch-style report σε dashboard συντονιστή — σχεδιασμένο να λειτουργεί χωρίς cloud dependency σε GB10 node.',
+            'Το Delatio (CivicVox-Omni) είναι local-first, χαμηλής καθυστέρησης multimodal emergency intelligence πλατφόρμα από το NVIDIA Spark Hack Toronto. Κάμερα και μικρόφωνο τηλεφώνου τροφοδοτούν edge pipeline που ταξινομεί κινδύνους, αντλεί Toronto open-data context (hydrants, RentSafeTO, 311) και στέλνει dispatch-style report σε dashboard συντονιστή, σχεδιασμένο να λειτουργεί χωρίς cloud dependency σε GB10 node.',
         role: 'Έχτισα το mobile experience, έθεσα σε λειτουργία το GB10 agent/inference path για το demo και συνέδεσα το full stack ώστε mobile capture, local agents και dashboard να μένουν συγχρονισμένα στα live incident flows.',
     },
     elenchus: {
         title: 'Elenchus',
         description:
-            'Το Elenchus είναι AI pitch roaster: οι founders έχουν σύντομο παράθυρο να παρουσιάσουν το startup σε ρεαλιστικό human avatar που τους εξετάζει σαν αδίστακτος VC — χωρίς κολακείες, μόνο ερωτήσεις που αποκαλύπτουν αδύναμες υποθέσεις. Χτίστηκε σε λιγότερο από 90 λεπτά για Cursor × Toronto Tech Week· κέρδισε Best Use of ElevenLabs στο track.',
-        role: 'Ανέλαβα το frontend UI/UX και συν-οδήγησα το demo pitch — διαμορφώνοντας το narrative του προϊόντος, τη live παρουσίαση και το interface με το οποίο οι founders αντιμετωπίζουν το avatar υπό πίεση χρόνου.',
+            'Το Elenchus είναι AI pitch roaster: οι founders έχουν σύντομο παράθυρο να παρουσιάσουν το startup σε ρεαλιστικό human avatar που τους εξετάζει σαν αδίστακτος VC: χωρίς κολακείες, μόνο ερωτήσεις που αποκαλύπτουν αδύναμες υποθέσεις. Χτίστηκε σε λιγότερο από 90 λεπτά για Cursor × Toronto Tech Week· κέρδισε Best Use of ElevenLabs στο track.',
+        role: 'Ανέλαβα το frontend UI/UX και συν-οδήγησα το demo pitch, διαμορφώνοντας το narrative του προϊόντος, τη live παρουσίαση και το interface με το οποίο οι founders αντιμετωπίζουν το avatar υπό πίεση χρόνου.',
     },
     'file-changer': {
         title: 'File Changer',
