@@ -95,7 +95,7 @@ const Skills = () => {
                                                 )}
                                             />
                                         </div>
-                                        <span className="text-2xl capitalize">
+                                        <span className="text-2xl">
                                             {item}
                                         </span>
                                     </div>

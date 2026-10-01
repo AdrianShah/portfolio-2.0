@@ -20,8 +20,6 @@ export type LanguageCopy = {
     };
     about: {
         heading: string;
-        intro: string;
-        body: string;
     };
     experience: {
         sectionTitle: string;
@@ -84,9 +82,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         about: {
             heading:
-                'I lead with empathy for the user pairing thoughtful design, pragmatic engineering, and the curiosity that comes with being a second-year computer engineering student.',
-            intro: 'Hi, I\'m Adrian Shahnazari Darcheh.',
-            body: 'I\'m a fullstack engineer in progress, focused on turning ideas into reliable products and polished user experiences. My approach focuses on performance, clarity, accessibility, and responsiveness so the final product feels solid on both desktop and mobile.',
+                'I learn by building. Most of what I know came from a hackathon deadline or a side project that got out of hand.',
         },
         experience: {
             sectionTitle: 'My Experience',
@@ -155,9 +151,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         about: {
             heading:
-                'اولویت من درک نیاز کاربر است؛ ترکیبی از طراحی دقیق، مهندسی عملی و همان کنجکاوی‌ای که به‌عنوان دانشجوی سال دوم مهندسی کامپیوتر همراه من است.',
-            intro: 'سلام، من آدریان شاه نظری درچه هستم',
-            body: 'من در مسیر تبدیل شدن به یک فول‌استک انجینیر هستم و روی ساخت محصول‌های قابل‌اعتماد و تجربه‌های کاربری صیقلی تمرکز دارم. اولویت من عملکرد، شفافیت، دسترس‌ پذیری و واکنش‌ گرایی است تا نتیجه نهایی روی دسکتاپ و موبایل محکم و خوب به نظر برسد.',
+                'با ساختن یاد می‌گیرم. بیشتر چیزهایی که می‌دانم از ددلاین یک هکاتون یا پروژه‌ای شخصی آمده که از کنترل خارج شد.',
         },
         experience: {
             sectionTitle: 'تجربه من',
@@ -226,9 +220,7 @@ const COPY: Record<LanguageCode, LanguageCopy> = {
         },
         about: {
             heading:
-                'Ξεκινώ από τον χρήστη: συνδυάζω προσεκτικό σχεδιασμό, ρεαλιστική μηχανική και την περιέργεια ενός φοιτητή δεύτερου έτους στη Μηχανική Υπολογιστών.',
-            intro: 'Γεια, είμαι ο Αντριάν Σιαχαναζάρι Νταρτζε.',
-            body: 'Εξελίσσομαι σε fullstack engineer και επικεντρώνομαι στη δημιουργία αξιόπιστων προϊόντων και καλοδουλεμένων εμπειριών χρήστη. Δίνω προτεραιότητα στην απόδοση, τη σαφήνεια, την προσβασιμότητα και την προσαρμοστικότητα ώστε το τελικό αποτέλεσμα να λειτουργεί σωστά σε desktop και mobile.',
+                'Μαθαίνω χτίζοντας. Τα περισσότερα που ξέρω προέκυψαν από την προθεσμία ενός hackathon ή από ένα side project που ξέφυγε από τον έλεγχο.',
         },
         experience: {
             sectionTitle: 'Η Εμπειρία Μου',
